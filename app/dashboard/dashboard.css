@@ -1,27 +1,10 @@
-body{
-    background-color:#F4F7F6;
+.info-container{
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
 }
-.containerDash{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    animation: fadeIn 2s;
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
-.title{
-    font-size: 2rem;
-}
-
-.content{
-    font-size: 1.5rem;
-}
-
 
 

@@ -25,30 +25,31 @@ export default function Navbar(){
 
     function logout() {
 
-    Swal.fire({
-    title: "Sair da conta?",
-    text: "Tem certeza que deseja se desconectar?",
-    icon: "question",
-    showConfirmButton: true,
-    showCancelButton: true,
-    confirmButtonColor: "rgb(11, 212, 34)",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Sair da conta",
-    cancelButtonText: "Cancelar"
-    }).then((result) => {
-    if (result.isConfirmed) {
-        Cookies.remove("logged");
-        Cookies.remove("username");
-        router.push("/")
-            Swal.fire({
-        title: "Você saiu da sua conta",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 1000
-    });
-    }
+        Swal.fire({
+            title: "Sair da conta?",
+            text: "Tem certeza que deseja se desconectar?",
+            icon: "question",
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonColor: "rgb(11, 212, 34)",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Sair da conta",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Você saiu da sua conta",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1000
+                });
+                Cookies.remove("logged");
+                Cookies.remove("username");
+                router.push("/");
+                router.refresh();
+            }
    
-});
+        });
     }
 
 
