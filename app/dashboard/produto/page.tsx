@@ -19,7 +19,7 @@ export default function ProdutosPage() {
     return (
         <>
         <NavBar />
-        
+
         <div className="login-container" style={{ padding: '20px', minHeight: '100vh' }}>
             
             <div className="login-card" style={{ width: '100%', maxWidth: '500px', marginBottom: '30px' }}>
@@ -43,7 +43,7 @@ export default function ProdutosPage() {
                             value={url} onChange={e => setUrl(e.target.value)} required />
                     </div>
 
-                    <button type="submit" className="btn-login">
+                    <button type="submit" className="button">
                         {editandoId ? 'Atualizar Produto' : 'Cadastrar Produto'}
                     </button>
                     {editandoId && (

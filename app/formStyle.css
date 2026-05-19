@@ -86,3 +86,20 @@
     display: flex;
     align-items: center;
 }
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    color: aliceblue;
+    background-color: rgb(235, 0, 0);
+
+}
+
+.button:hover{
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.05)
+}

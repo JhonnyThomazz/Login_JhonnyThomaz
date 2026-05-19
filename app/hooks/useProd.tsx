@@ -4,6 +4,7 @@ import { useState, useCallback } from 'react';
 import api from '../lib/api';
 import { Produto } from '../types/produtos';
 import { useRouter } from 'next/navigation';
+import Swal from 'sweetalert2';
 
 export function useProdutos() {
     const [produtos, setProdutos] = useState<Produto[]>([]);
@@ -24,7 +25,13 @@ export function useProdutos() {
             const resposta = await api.get('/produtos/');
             setProdutos(resposta.data);
         } catch (error) {
-            alert("Erro ao buscar produtos");
+            Swal.fire({
+                title: "Oops...!",
+                text: "Erro ao buscar o produto!",
+                icon: "error",
+                showConfirmButton: true,
+                confirmButtonColor: "rgb(212, 11, 11)"
+            });
         } finally {
             setLoading(false);
         }
@@ -42,10 +49,22 @@ export function useProdutos() {
                 await api.post('/produtos/', dados);
             }
             limparFormulario();
-            alert("Sucesso!");
+            Swal.fire({
+                title: "sucesso!",
+                text: "Produto cadastrado com sucesso.",
+                icon: "success",
+                showConfirmButton: true,
+                confirmButtonColor: "rgb(11, 212, 34)"
+            });
             router.push('/dashboard');
         } catch (error) {
-            alert("Erro ao salvar produto");
+            Swal.fire({
+                title: "Oops...!",
+                text: "Erro ao cadastrar o produto!",
+                icon: "error",
+                showConfirmButton: true,
+                confirmButtonColor: "rgb(212, 11, 11)"
+            });
         }
     };
 
@@ -56,7 +75,13 @@ export function useProdutos() {
             await api.delete(`/produtos/${id}`);
             listarProdutos();
         } catch (error) {
-            alert("Erro ao excluir");
+            Swal.fire({
+                title: "Oops...!",
+                text: "Erro ao excluir o produto!",
+                icon: "error",
+                showConfirmButton: true,
+                confirmButtonColor: "rgb(212, 11, 11)"
+            });
         }
     };
 
