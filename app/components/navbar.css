@@ -1,0 +1,53 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    padding: 15px;
+    font-size: 1.2rem;
+}
+
+nav a{
+    color: white;
+}
+
+.details{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    transition: color 0.3s ease-in-out;
+    color: aliceblue;
+    gap: 30px;
+}
+
+.img{
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.image img{
+    width: 60px;
+    border-radius: 1000px;
+}
+
+.details a:hover{
+   color: rgb(213, 0, 0);
+}
+
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    color: aliceblue;
+    background-color: rgb(235, 0, 0);
+
+}
+
+.button:hover{
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.05)
+}
