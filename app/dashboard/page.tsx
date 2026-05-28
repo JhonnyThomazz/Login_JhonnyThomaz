@@ -14,6 +14,13 @@ export default function Dashboard() {
             nome, setNome, descricao, setDescricao, preco, setPreco, url, setUrl,
             editandoId, limparFormulario
         } = useProdutos();
+
+         useEffect(() => {
+        if (produtoId) {
+            buscarProdutoPorId(produtoId);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [produtoId]);
     
         useEffect(() => {
             listarProdutos();
@@ -44,20 +51,20 @@ export default function Dashboard() {
                                 <div style={{padding: '10px', textAlign: 'center'}}>Ações</div>
                             </div>
                         <div>
-                            {produtos.map(p => (
-                                <div key={p.id} style={{ borderBottom: '1px solid #eee', display:'grid', gridTemplateColumns: "1fr 3fr 1fr 1fr"}}>
+                            {produtos.map(produto => (
+                                <div key={produto.id} style={{ borderBottom: '1px solid #eee', display:'grid', gridTemplateColumns: "1fr 3fr 1fr 1fr"}}>
                                     <div style={{padding: '10px', textAlign: 'left'}}>
-                                        <img src={(p.url)}
+                                        <img src={(produto.url)}
                                          style={{width: "90px", height: "90px", borderRadius: "10px"}}/>
                                     </div>
-                                    <div style={{ padding: '10px', textAlign: 'left' }}>{p.nome}</div>
-                                    <div style={{ padding: '10px', textAlign:'left' }}>R$ {(Number(p.preco) || 0).toFixed(2)}</div>
+                                    <div style={{ padding: '10px', textAlign: 'left' }}>{produto.nome}</div>
+                                    <div style={{ padding: '10px', textAlign:'left' }}>R$ {(Number(produto.preco) || 0).toFixed(2)}</div>
                                     <div style={{ padding: '10px', textAlign: 'center' }}>
-                                        <button onClick={() => prepararEdicao(p)} 
+                                        <button onClick={() => router.push(`/dashboard/produtos/${produto.id}`)} 
                                                 style={{ marginRight: '10px', color: '#007bff', background: 'none', border: 'none', cursor: 'pointer' }}>
                                             Editar
                                         </button>
-                                        <button onClick={() => excluir(p.id!)} 
+                                        <button onClick={() => excluir(produto.id!)} 
                                                 style={{ color: 'red', background: 'none', border: 'none', cursor: 'pointer' }}>
                                             Excluir
                                         </button>

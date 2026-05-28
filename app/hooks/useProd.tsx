@@ -36,6 +36,23 @@ export function useProdutos() {
             setLoading(false);
         }
     }, []);
+    // GETBYID
+    const buscarProdPorId = async (id: number) => {
+        try{
+            const resposta = await api.get(`/produtos/${id}`);
+            prepararEdicao(resposta.data);
+        }
+        catch (error){
+            Swal.fire({
+                title: "Oops...",
+                text: "Erro ao buscar os detalhes do produto!",
+                icon: "error",
+                showConfirmButton: true,
+                confirmButtonColor: "rgb(212, 11, 11)"
+            })
+            router.push('/dashboard/produtos');
+        }
+    };
 
     // POST / PUT - Salvar
     const salvar = async (e: React.FormEvent) => {
