@@ -5,6 +5,7 @@ import Cookies from "js-cookie"; // Importamos a biblioteca
 import { useProdutos } from "../hooks/useProd";
 import NavBar from "../components/navbar";
 import "../dashboard/dashboard.css"
+import { Produto } from "../types/produtos";
 
 export default function Dashboard() {
     const router = useRouter();
@@ -16,12 +17,12 @@ export default function Dashboard() {
         } = useProdutos();
 
          useEffect(() => {
-        if (produtoId) {
-            buscarProdutoPorId(produtoId);
+        if (produtos) {
+            buscarProdPorId(produtos);
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [produtoId]);
-    
+    }, [produtos]);
+
         useEffect(() => {
             listarProdutos();
         }, [listarProdutos]);
@@ -77,4 +78,8 @@ export default function Dashboard() {
             </div>
         </div>
     );
+}
+
+function buscarProdPorId(produtos: Produto[]) {
+    throw new Error("Function not implemented.");
 }
